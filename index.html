@@ -1,601 +1,953 @@
 <!DOCTYPE html>
-
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="color-scheme" content="dark"
+<meta name="color-scheme" content="dark">
 <title>VillianCDZ — Правовые документы</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;600&family=Geologica:wght@300;400;500&display=swap');
 
-:root {
-–bg: #0d0d0f;
-–surface: #141418;
-–border: #1e1e26;
-–accent: #7c6af7;
-–accent2: #b8a9ff;
-–text: #e8e6f0;
-–muted: #6b6880;
-}
+  :root {
+    --bg: #0d0d0f;
+    --surface: #141418;
+    --border: #1e1e26;
+    --accent: #7c6af7;
+    --accent2: #b8a9ff;
+    --text: #e8e6f0;
+    --muted: #6b6880;
+  }
 
-- { margin: 0; padding: 0; box-sizing: border-box; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
 
-body {
-font-family: ‘Geologica’, sans-serif;
-background: var(–bg);
-color: var(–text);
-min-height: 100vh;
-font-size: 15px;
-line-height: 1.7;
-}
+  body {
+    font-family: 'Geologica', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    font-size: 15px;
+    line-height: 1.7;
+  }
 
-body::before {
-content: ‘’;
-position: fixed;
-inset: 0;
-background-image:
-linear-gradient(rgba(124,106,247,0.03) 1px, transparent 1px),
-linear-gradient(90deg, rgba(124,106,247,0.03) 1px, transparent 1px);
-background-size: 40px 40px;
-pointer-events: none;
-z-index: 0;
-}
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(124,106,247,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(124,106,247,0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+    z-index: 0;
+  }
 
-.wrap {
-max-width: 760px;
-margin: 0 auto;
-padding: 60px 24px 100px;
-position: relative;
-z-index: 1;
-}
+  .wrap {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 60px 24px 100px;
+    position: relative;
+    z-index: 1;
+  }
 
-header { margin-bottom: 48px; }
+  header { margin-bottom: 48px; }
 
-.badge {
-display: inline-block;
-font-family: ‘Unbounded’, sans-serif;
-font-size: 10px;
-font-weight: 600;
-letter-spacing: 0.15em;
-text-transform: uppercase;
-color: var(–accent2);
-background: rgba(124,106,247,0.12);
-border: 1px solid rgba(124,106,247,0.25);
-padding: 6px 14px;
-border-radius: 100px;
-margin-bottom: 24px;
-}
+  .badge {
+    display: inline-block;
+    font-family: 'Unbounded', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent2);
+    background: rgba(124,106,247,0.12);
+    border: 1px solid rgba(124,106,247,0.25);
+    padding: 6px 14px;
+    border-radius: 100px;
+    margin-bottom: 24px;
+  }
 
-h1 {
-font-family: ‘Unbounded’, sans-serif;
-font-size: clamp(26px, 6vw, 42px);
-font-weight: 600;
-line-height: 1.15;
-background: linear-gradient(135deg, #fff 0%, var(–accent2) 100%);
--webkit-background-clip: text;
--webkit-text-fill-color: transparent;
-background-clip: text;
-margin-bottom: 12px;
-}
+  h1 {
+    font-family: 'Unbounded', sans-serif;
+    font-size: clamp(26px, 6vw, 42px);
+    font-weight: 600;
+    line-height: 1.15;
+    background: linear-gradient(135deg, #fff 0%, var(--accent2) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 12px;
+  }
 
-.subtitle { color: var(–muted); font-size: 14px; font-weight: 300; }
+  .subtitle { color: var(--muted); font-size: 14px; font-weight: 300; }
 
-.tabs {
-display: flex;
-gap: 4px;
-background: var(–surface);
-border: 1px solid var(–border);
-border-radius: 14px;
-padding: 5px;
-margin-bottom: 40px;
-}
+  .tabs {
+    display: flex;
+    gap: 4px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 5px;
+    margin-bottom: 40px;
+  }
 
-.tab {
-flex: 1;
-padding: 12px 16px;
-border-radius: 10px;
-border: none;
-background: transparent;
-color: var(–muted);
-font-family: ‘Geologica’, sans-serif;
-font-size: 14px;
-font-weight: 500;
-cursor: pointer;
-transition: all 0.25s ease;
-text-align: center;
-}
+  .tab {
+    flex: 1;
+    padding: 12px 16px;
+    border-radius: 10px;
+    border: none;
+    background: transparent;
+    color: var(--muted);
+    font-family: 'Geologica', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    text-align: center;
+  }
 
-.tab.active {
-background: var(–accent);
-color: #fff;
-box-shadow: 0 4px 20px rgba(124,106,247,0.4);
-}
+  .tab.active {
+    background: var(--accent);
+    color: #fff;
+    box-shadow: 0 4px 20px rgba(124,106,247,0.4);
+  }
 
-.panel { display: none; }
-.panel.active { display: block; }
+  .panel { display: none; }
+  .panel.active { display: block; }
 
-.section {
-border: 1px solid var(–border);
-border-radius: 16px;
-background: var(–surface);
-margin-bottom: 12px;
-overflow: hidden;
-transition: border-color 0.2s;
-}
+  /* Document style */
+  .doc-title {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--accent2);
+    margin-bottom: 8px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 24px;
+  }
 
-.section:hover { border-color: rgba(124,106,247,0.3); }
+  .doc-intro {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin-bottom: 32px;
+    color: #b0adc0;
+    font-size: 14px;
+    line-height: 1.75;
+  }
 
-.section-header {
-display: flex;
-align-items: center;
-gap: 14px;
-padding: 20px 24px;
-}
+  .chapter {
+    margin-bottom: 32px;
+  }
 
-.section-icon {
-width: 36px;
-height: 36px;
-border-radius: 10px;
-background: rgba(124,106,247,0.15);
-display: flex;
-align-items: center;
-justify-content: center;
-font-size: 16px;
-flex-shrink: 0;
-}
+  .chapter-title {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--accent2);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 14px 20px;
+    background: rgba(124,106,247,0.08);
+    border: 1px solid rgba(124,106,247,0.2);
+    border-radius: 10px 10px 0 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
 
-.section-title {
-font-family: ‘Unbounded’, sans-serif;
-font-size: 13px;
-font-weight: 400;
-flex: 1;
-}
+  .chapter-num {
+    background: var(--accent);
+    color: #fff;
+    font-size: 11px;
+    width: 22px;
+    height: 22px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
 
-.section-num { font-size: 12px; color: var(–muted); font-weight: 300; }
+  .chapter-body {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-top: none;
+    border-radius: 0 0 10px 10px;
+    padding: 20px 24px;
+  }
 
-.section-body {
-padding: 0 24px 22px 74px;
-color: #b0adc0;
-font-size: 14px;
-line-height: 1.75;
-}
+  .article {
+    margin-bottom: 20px;
+  }
 
-.section-body p { margin-bottom: 10px; }
-.section-body p:last-child { margin-bottom: 0; }
+  .article:last-child { margin-bottom: 0; }
 
-.section-body ul { list-style: none; margin: 8px 0; }
-.section-body ul li {
-padding: 4px 0 4px 18px;
-position: relative;
-}
-.section-body ul li::before {
-content: ‘—’;
-position: absolute;
-left: 0;
-color: var(–accent);
-font-weight: 600;
-}
+  .article-title {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
 
-.highlight { color: var(–accent2); font-weight: 500; }
+  .article-body {
+    color: #b0adc0;
+    font-size: 14px;
+    line-height: 1.75;
+  }
 
-.doc-meta {
-display: flex;
-align-items: center;
-justify-content: space-between;
-padding: 20px 24px;
-background: var(–surface);
-border: 1px solid var(–border);
-border-radius: 14px;
-margin-top: 24px;
-}
+  .article-body p {
+    margin-bottom: 8px;
+  }
 
-.doc-meta-label {
-font-size: 12px;
-color: var(–muted);
-font-weight: 300;
-letter-spacing: 0.05em;
-text-transform: uppercase;
-margin-bottom: 4px;
-}
+  .article-body p:last-child { margin-bottom: 0; }
 
-.doc-meta-value {
-font-family: ‘Unbounded’, sans-serif;
-font-size: 12px;
-color: var(–accent2);
-}
+  ol.legal {
+    list-style: none;
+    counter-reset: legal-counter;
+    margin: 8px 0;
+  }
 
-.copy-block {
-margin-top: 32px;
-padding: 24px;
-background: rgba(124,106,247,0.06);
-border: 1px dashed rgba(124,106,247,0.3);
-border-radius: 16px;
-}
+  ol.legal li {
+    counter-increment: legal-counter;
+    padding: 5px 0 5px 28px;
+    position: relative;
+    color: #b0adc0;
+    font-size: 14px;
+    line-height: 1.7;
+  }
 
-.copy-block-title {
-font-family: ‘Unbounded’, sans-serif;
-font-size: 11px;
-font-weight: 600;
-letter-spacing: 0.1em;
-text-transform: uppercase;
-color: var(–accent2);
-margin-bottom: 16px;
-}
+  ol.legal li::before {
+    content: counter(legal-counter) ".";
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: 600;
+    font-size: 13px;
+  }
 
-.copy-block pre {
-font-family: ‘Courier New’, monospace;
-font-size: 13px;
-color: #c8c4e0;
-white-space: pre-wrap;
-line-height: 1.6;
-}
+  ol.legal.sub {
+    margin-left: 16px;
+    counter-reset: sub-counter;
+  }
 
-.copy-btn {
-margin-top: 14px;
-padding: 10px 20px;
-background: var(–accent);
-color: #fff;
-border: none;
-border-radius: 10px;
-font-family: ‘Geologica’, sans-serif;
-font-size: 13px;
-font-weight: 500;
-cursor: pointer;
-transition: opacity 0.2s;
-}
+  ol.legal.sub li {
+    counter-increment: sub-counter;
+  }
 
-.copy-btn:hover { opacity: 0.85; }
+  ol.legal.sub li::before {
+    content: counter(sub-counter) ")";
+    color: var(--accent2);
+  }
 
-@media (max-width: 500px) {
-.section-body { padding-left: 24px; }
-.tab { font-size: 12px; padding: 10px 8px; }
-h1 { font-size: 24px; }
-}
+  .highlight { color: var(--accent2); font-weight: 500; }
+
+  .warning-box {
+    background: rgba(247, 106, 106, 0.06);
+    border: 1px solid rgba(247, 106, 106, 0.2);
+    border-radius: 10px;
+    padding: 14px 18px;
+    color: #f0b0b0;
+    font-size: 13px;
+    margin: 12px 0;
+    line-height: 1.65;
+  }
+
+  .info-box {
+    background: rgba(124,106,247,0.06);
+    border: 1px solid rgba(124,106,247,0.2);
+    border-radius: 10px;
+    padding: 14px 18px;
+    color: #b8a9ff;
+    font-size: 13px;
+    margin: 12px 0;
+    line-height: 1.65;
+  }
+
+  .doc-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 24px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    margin-top: 32px;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .doc-meta-label {
+    font-size: 11px;
+    color: var(--muted);
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .doc-meta-value {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 12px;
+    color: var(--accent2);
+  }
+
+  @media (max-width: 500px) {
+    .tab { font-size: 12px; padding: 10px 8px; }
+    h1 { font-size: 24px; }
+    .chapter-body { padding: 16px; }
+  }
 </style>
-
 </head>
 <body>
 <div class="wrap">
 
   <header>
-    <div class="badge">⚡ VillianCDZ · Правовые документы</div>
+    <div class="badge">⚡ VillianCDZ · Правовые документы · Редакция 2026</div>
     <h1>VillianCDZ</h1>
-    <p class="subtitle">Актуальная редакция · 2025 · Россия</p>
+    <p class="subtitle">Юридические документы · Актуальная редакция · Российская Федерация</p>
   </header>
 
   <div class="tabs">
-    <button class="tab active" onclick="switchTab('terms', this)">📋 Соглашение</button>
-    <button class="tab" onclick="switchTab('privacy', this)">🔒 Конфиденциальность</button>
+    <button class="tab active" onclick="switchTab('terms', this)">📋 Пользовательское соглашение</button>
+    <button class="tab" onclick="switchTab('privacy', this)">🔒 Политика конфиденциальности</button>
   </div>
 
   <!-- ===== ПОЛЬЗОВАТЕЛЬСКОЕ СОГЛАШЕНИЕ ===== -->
-
   <div class="panel active" id="terms">
 
-```
-<div class="section">
-  <div class="section-header">
-    <div class="section-icon">📌</div>
-    <div class="section-title">Общие положения</div>
-    <div class="section-num">1</div>
-  </div>
-  <div class="section-body">
-    <p>Настоящее Пользовательское соглашение (далее — «Соглашение») регулирует использование Telegram-бота <span class="highlight">VillianCDZ</span> (далее — «Сервис»), предоставляемого физическим лицом <span class="highlight">[ИМЯ]</span> (далее — «Администратор»).</p>
-    <p>Начиная использовать Сервис, вы подтверждаете, что ознакомились с условиями Соглашения и принимаете их в полном объёме. Если вы не согласны — прекратите использование.</p>
-    <p>Сервис предназначен для лиц <span class="highlight">от 14 лет</span>. Пользователи младше 14 лет могут использовать Сервис только с согласия родителей или законных представителей.</p>
-  </div>
-</div>
+    <div class="doc-title">Пользовательское соглашение (Публичная оферта)</div>
 
-<div class="section">
-  <div class="section-header">
-    <div class="section-icon">🤖</div>
-    <div class="section-title">Что делает Сервис</div>
-    <div class="section-num">2</div>
-  </div>
-  <div class="section-body">
-    <p>VillianCDZ — Telegram-бот, который помогает школьникам с домашними заданиями из МЭШ (Московская электронная школа). Функции Сервиса:</p>
-    <ul>
-      <li>Авторизация через токен МЭШ и просмотр актуальных ДЗ по неделям и дням</li>
-      <li>Автоматическое решение цифровых домашних заданий (ЦДЗ) с настройкой времени выполнения и допустимого числа ошибок</li>
-      <li>ИИ-ассистент на базе Claude (Anthropic) для помощи в учёбе</li>
-    </ul>
-    <p>Сервис является <span class="highlight">вспомогательным инструментом</span>. Администратор не гарантирует академических результатов и не поощряет использование бота в ущерб самостоятельному обучению.</p>
-  </div>
-</div>
+    <div class="doc-intro">
+      Настоящее Пользовательское соглашение является публичной офертой в соответствии со статьёй 437 Гражданского кодекса Российской Федерации. Начало использования Сервиса означает полное и безоговорочное принятие условий настоящего Соглашения (акцепт оферты) в соответствии со статьёй 438 ГК РФ.
+    </div>
 
-<div class="section">
-  <div class="section-header">
-    <div class="section-icon">✅</div>
-    <div class="section-title">Права и обязанности пользователя</div>
-    <div class="section-num">3</div>
-  </div>
-  <div class="section-body">
-    <p>Пользователь <span class="highlight">вправе</span>:</p>
-    <ul>
-      <li>Использовать Сервис в личных, некоммерческих целях</li>
-      <li>Обратиться в поддержку через команду /sup</li>
-      <li>Запросить удаление своих данных в любой момент</li>
-    </ul>
-    <p>Пользователь <span class="highlight">обязуется не</span>:</p>
-    <ul>
-      <li>Передавать, продавать или сдавать в аренду доступ к Сервису третьим лицам</li>
-      <li>Использовать Сервис в коммерческих целях без письменного согласия Администратора</li>
-      <li>Применять автоматизированные скрипты, ботов или иные инструменты для массовых запросов</li>
-      <li>Пытаться получить несанкционированный доступ к системе или базе данных</li>
-      <li>Создавать несколько аккаунтов для обхода ограничений</li>
-    </ul>
-  </div>
-</div>
+    <!-- Глава 1 -->
+    <div class="chapter">
+      <div class="chapter-title"><span class="chapter-num">1</span> Общие положения и определения</div>
+      <div class="chapter-body">
+        <div class="article">
+          <div class="article-title">1.1. Стороны соглашения</div>
+          <div class="article-body">
+            <p><span class="highlight">Исполнитель</span> — физическое лицо <span class="highlight">Администрация сервиса VillianCDZ</span>, предоставляющее доступ к Сервису на условиях настоящего Соглашения.</p>
+            <p><span class="highlight">Пользователь</span> — физическое лицо, акцептовавшее настоящую оферту путём начала использования Сервиса.</p>
+          </div>
+        </div>
+        <div class="article">
+          <div class="article-title">1.2. Основные определения</div>
+          <div class="article-body">
+            <ol class="legal">
+              <li><span class="highlight">Сервис</span> — программный комплекс VillianCDZ, функционирующий в виде Telegram-бота, предоставляющий услуги по генерации текстового контента с использованием технологий искусственного интеллекта.</li>
+              <li><span class="highlight">Услуга генерации</span> — предоставление Пользователю текстового контента, сформированного автоматически с использованием ИИ-алгоритмов, без гарантии его достоверности, корректности или применимости.</li>
+              <li><span class="highlight">МЭШ</span> — Московская электронная школа, внешний сервис, не аффилированный с Исполнителем.</li>
+              <li><span class="highlight">Токен МЭШ</span> — временный авторизационный ключ для доступа к данным МЭШ, предоставляемый самим Пользователем.</li>
+              <li><span class="highlight">Подписка</span> — платный тарифный план, предоставляющий расширенный доступ к функциям Сервиса.</li>
+              <li><span class="highlight">Личный кабинет</span> — персональный раздел Пользователя в интерфейсе Telegram-бота.</li>
+            </ol>
+          </div>
+        </div>
+        <div class="article">
+          <div class="article-title">1.3. Возраст Пользователя</div>
+          <div class="article-body">
+            <p>Сервис предназначен для лиц, достигших возраста <span class="highlight">14 лет</span>. Лица в возрасте от 14 до 18 лет вправе использовать Сервис с согласия родителей или иных законных представителей. Начало использования Сервиса означает подтверждение соответствия возрастному требованию.</p>
+          </div>
+        </div>
+      </div>
+    </div>
 
-<div class="section">
-  <div class="section-header">
-    <div class="section-icon">💳</div>
-    <div class="section-title">Подписка и оплата</div>
-    <div class="section-num">4</div>
-  </div>
-  <div class="section-body">
-    <p>Часть функций VillianCDZ доступна только при наличии активной платной подписки.</p>
-    <ul>
-      <li>Актуальные тарифы отображаются в команде <span class="highlight">/pay</span></li>
-      <li>Оплата производится через платёжные системы, указанные в Сервисе</li>
-      <li>Подписка активируется автоматически после подтверждения платежа</li>
-      <li><span class="highlight">Возврат средств</span> возможен в течение 24 часов с момента оплаты, если платные функции не были использованы — обратитесь в /sup</li>
-      <li>После истечения подписки платные функции становятся недоступны; данные сохраняются</li>
-      <li>Администратор вправе изменять тарифы с уведомлением пользователей за 7 дней</li>
-    </ul>
-  </div>
-</div>
+    <!-- Глава 2 -->
+    <div class="chapter">
+      <div class="chapter-title"><span class="chapter-num">2</span> Предмет соглашения и характер услуг</div>
+      <div class="chapter-body">
+        <div class="article">
+          <div class="article-title">2.1. Предмет соглашения</div>
+          <div class="article-body">
+            <p>Исполнитель предоставляет Пользователю доступ к Сервису, обеспечивающему возможность получения автоматически сгенерированного контента с использованием технологий искусственного интеллекта, а также доступ к данным учётной записи МЭШ Пользователя через предоставленный им токен.</p>
+          </div>
+        </div>
+        <div class="article">
+          <div class="article-title">2.2. Характер предоставляемых услуг</div>
+          <div class="article-body">
+            <div class="warning-box">
+              ⚠️ ВАЖНО: Сервис предоставляет исключительно услугу по генерации текстового контента средствами искусственного интеллекта. Исполнитель не оказывает образовательных, консультационных, репетиторских или иных профессиональных услуг.
+            </div>
+            <ol class="legal">
+              <li>Весь контент, предоставляемый Сервисом, является результатом автоматической генерации алгоритмами ИИ и не проходит проверку со стороны Исполнителя.</li>
+              <li>Исполнитель <span class="highlight">не гарантирует</span> достоверность, точность, полноту, актуальность или применимость сгенерированного контента для каких-либо целей.</li>
+              <li>Сгенерированный контент может содержать ошибки, неточности, устаревшие или недостоверные сведения — это является неотъемлемым свойством технологий ИИ-генерации.</li>
+              <li>Правильность или неправильность сгенерированных ответов не является критерием качества оказанной услуги генерации.</li>
+              <li>Пользователь самостоятельно несёт ответственность за принятое решение об использовании сгенерированного контента.</li>
+            </ol>
+          </div>
+        </div>
+        <div class="article">
+          <div class="article-title">2.3. Функциональные возможности Сервиса</div>
+          <div class="article-body">
+            <ol class="legal">
+              <li>Просмотр перечня домашних заданий из учётной записи МЭШ Пользователя по предоставленному токену.</li>
+              <li>Автоматическая генерация ответов на задания с настраиваемыми параметрами (время выполнения, допустимое количество ошибок).</li>
+              <li>Доступ к ИИ-ассистенту для получения сгенерированных текстовых ответов на запросы Пользователя (в рамках тарифного плана).</li>
+              <li>Реферальная программа для получения дополнительных единиц доступа к Сервису.</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
 
-<div class="section">
-  <div class="section-header">
-    <div class="section-icon">⚠️</div>
-    <div class="section-title">Ограничение ответственности</div>
-    <div class="section-num">5</div>
-  </div>
-  <div class="section-body">
-    <p>Администратор <span class="highlight">не несёт ответственности</span> за:</p>
-    <ul>
-      <li>Точность и корректность ответов, сгенерированных ИИ</li>
-      <li>Оценки, замечания или иные академические последствия использования Сервиса</li>
-      <li>Временную недоступность Сервиса по техническим причинам</li>
-      <li>Изменения в API МЭШ, влияющие на работу Сервиса</li>
-      <li>Блокировку аккаунта МЭШ, если она произошла по причинам, связанным с использованием Сервиса</li>
-    </ul>
-    <p>Пользователь использует Сервис <span class="highlight">на собственный риск</span> и осознаёт возможные последствия.</p>
-  </div>
-</div>
+    <!-- Глава 3 -->
+    <div class="chapter">
+      <div class="chapter-title"><span class="chapter-num">3</span> Права и обязанности сторон</div>
+      <div class="chapter-body">
+        <div class="article">
+          <div class="article-title">3.1. Права Пользователя</div>
+          <div class="article-body">
+            <ol class="legal">
+              <li>Использовать Сервис в соответствии с условиями настоящего Соглашения и выбранным тарифным планом.</li>
+              <li>Обращаться к Исполнителю по вопросам, связанным с использованием Сервиса, через команду /sup.</li>
+              <li>Запросить удаление своих персональных данных в любой момент.</li>
+              <li>Отказаться от Сервиса в любое время, прекратив его использование.</li>
+            </ol>
+          </div>
+        </div>
+        <div class="article">
+          <div class="article-title">3.2. Обязанности Пользователя</div>
+          <div class="article-body">
+            <ol class="legal">
+              <li>Соблюдать условия настоящего Соглашения и применимое законодательство РФ.</li>
+              <li>Не передавать доступ к Сервису третьим лицам, не продавать и не сдавать его в аренду.</li>
+              <li>Не использовать Сервис в коммерческих целях без письменного согласия Исполнителя.</li>
+              <li>Не применять автоматизированные инструменты, скрипты или ботов для генерации массовых запросов.</li>
+              <li>Не предпринимать попыток несанкционированного доступа к системе Сервиса, его базам данных или программному коду.</li>
+              <li>Не создавать множественные учётные записи с целью обхода ограничений Сервиса.</li>
+              <li>Самостоятельно обеспечивать конфиденциальность токена МЭШ и иных данных для доступа.</li>
+              <li>Осознавать образовательные риски, связанные с использованием автоматически сгенерированного контента при выполнении учебных заданий.</li>
+            </ol>
+          </div>
+        </div>
+        <div class="article">
+          <div class="article-title">3.3. Права Исполнителя</div>
+          <div class="article-body">
+            <ol class="legal">
+              <li>Вносить изменения в функциональность Сервиса, его интерфейс и условия предоставления доступа.</li>
+              <li>Устанавливать ограничения на использование Сервиса в технических целях.</li>
+              <li>Приостанавливать или прекращать доступ к Сервису при нарушении Пользователем условий настоящего Соглашения.</li>
+              <li>Изменять тарифные планы с уведомлением Пользователей не менее чем за 7 (семь) календарных дней.</li>
+              <li>Проводить технические работы, временно ограничивающие доступ к Сервису.</li>
+            </ol>
+          </div>
+        </div>
+        <div class="article">
+          <div class="article-title">3.4. Обязанности Исполнителя</div>
+          <div class="article-body">
+            <ol class="legal">
+              <li>Обеспечивать функционирование Сервиса в соответствии с заявленными характеристиками (за исключением случаев технических сбоев, обстоятельств непреодолимой силы и плановых работ).</li>
+              <li>Хранить персональные данные Пользователей в соответствии с требованиями ФЗ-152 «О персональных данных».</li>
+              <li>Уведомлять Пользователей об изменениях условий Соглашения через Сервис.</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
 
-<div class="section">
-  <div class="section-header">
-    <div class="section-icon">🚫</div>
-    <div class="section-title">Блокировка</div>
-    <div class="section-num">6</div>
-  </div>
-  <div class="section-body">
-    <p>Администратор вправе заблокировать пользователя <span class="highlight">без предупреждения</span> в случае:</p>
-    <ul>
-      <li>Нарушения условий настоящего Соглашения</li>
-      <li>Подозрения в мошенничестве или злоупотреблении Сервисом</li>
-      <li>Попыток дестабилизировать работу Сервиса</li>
-      <li>Создания множественных аккаунтов</li>
-    </ul>
-    <p>При блокировке за нарушение правил оставшийся период подписки <span class="highlight">не компенсируется</span>.</p>
-  </div>
-</div>
+    <!-- Глава 4 -->
+    <div class="chapter">
+      <div class="chapter-title"><span class="chapter-num">4</span> Стоимость и порядок оплаты</div>
+      <div class="chapter-body">
+        <div class="article">
+          <div class="article-title">4.1. Тарифные планы</div>
+          <div class="article-body">
+            <ol class="legal">
+              <li><span class="highlight">Бесплатный план</span> — 7 (семь) единиц генерации при регистрации, без дополнительной оплаты.</li>
+              <li><span class="highlight">Базовый план</span> — 100 (сто) рублей в месяц, включает безлимитный доступ к генерации ДЗ и ИИ-ассистенту.</li>
+              <li>Актуальный перечень тарифных планов и их условия отображаются в команде /pay.</li>
+            </ol>
+          </div>
+        </div>
+        <div class="article">
+          <div class="article-title">4.2. Порядок оплаты</div>
+          <div class="article-body">
+            <ol class="legal">
+              <li>Оплата производится через платёжные системы, указанные в интерфейсе Сервиса.</li>
+              <li>Подписка активируется автоматически после подтверждения платежа платёжной системой.</li>
+              <li>Исполнитель не хранит и не обрабатывает платёжные реквизиты Пользователей — они обрабатываются исключительно платёжными системами.</li>
+            </ol>
+          </div>
+        </div>
+        <div class="article">
+          <div class="article-title">4.3. Возврат денежных средств</div>
+          <div class="article-body">
+            <ol class="legal">
+              <li>Возврат денежных средств возможен в течение <span class="highlight">24 (двадцати четырёх) часов</span> с момента оплаты при условии, что Пользователь не использовал платные функции Сервиса.</li>
+              <li>Для оформления возврата необходимо обратиться в службу поддержки через команду /sup с указанием реквизитов платежа.</li>
+              <li>Возврат средств за частично использованный период подписки не производится, за исключением случаев технической невозможности предоставления Сервиса по вине Исполнителя.</li>
+              <li>При блокировке учётной записи за нарушение настоящего Соглашения денежные средства возврату не подлежат.</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
 
-<div class="section">
-  <div class="section-header">
-    <div class="section-icon">📝</div>
-    <div class="section-title">Изменение Соглашения</div>
-    <div class="section-num">7</div>
-  </div>
-  <div class="section-body">
-    <p>Администратор вправе вносить изменения в Соглашение. Пользователи уведомляются через Сервис или канал поддержки.</p>
-    <p>Продолжение использования Сервиса после публикации изменений означает автоматическое согласие с новой редакцией.</p>
-  </div>
-</div>
+    <!-- Глава 5 -->
+    <div class="chapter">
+      <div class="chapter-title"><span class="chapter-num">5</span> Ответственность сторон и ограничение ответственности</div>
+      <div class="chapter-body">
+        <div class="article">
+          <div class="article-title">5.1. Ограничение ответственности Исполнителя</div>
+          <div class="article-body">
+            <div class="warning-box">
+              ⚠️ Исполнитель оказывает исключительно услугу по технической генерации контента и не несёт ответственности за последствия его использования Пользователем.
+            </div>
+            <ol class="legal">
+              <li>Исполнитель не несёт ответственности за достоверность, точность и корректность сгенерированного контента, поскольку предметом договора является услуга генерации, а не предоставление верных ответов.</li>
+              <li>Исполнитель не несёт ответственности за любые академические последствия использования Сервиса: оценки, дисциплинарные меры, замечания со стороны образовательных учреждений.</li>
+              <li>Исполнитель не несёт ответственности за временную недоступность Сервиса по техническим причинам, в том числе связанным с работой Telegram, сторонних API и платёжных систем.</li>
+              <li>Исполнитель не несёт ответственности за изменения в API и политике МЭШ, повлёкшие частичную или полную неработоспособность соответствующих функций Сервиса.</li>
+              <li>Исполнитель не несёт ответственности за блокировку учётной записи МЭШ Пользователя, произошедшую в связи с использованием Сервиса.</li>
+              <li>Исполнитель не несёт ответственности за компрометацию токена МЭШ, произошедшую по вине Пользователя.</li>
+              <li>Совокупный размер ответственности Исполнителя перед Пользователем по любым основаниям не может превышать сумму, фактически уплаченную Пользователем за Сервис в течение последних 30 (тридцати) дней.</li>
+            </ol>
+          </div>
+        </div>
+        <div class="article">
+          <div class="article-title">5.2. Ответственность Пользователя</div>
+          <div class="article-body">
+            <ol class="legal">
+              <li>Пользователь самостоятельно и в полном объёме несёт ответственность за использование сгенерированного контента.</li>
+              <li>Пользователь несёт ответственность за соблюдение правил использования МЭШ и иных сторонних сервисов.</li>
+              <li>Пользователь несёт ответственность за нарушение настоящего Соглашения в соответствии с действующим законодательством РФ.</li>
+            </ol>
+          </div>
+        </div>
+        <div class="article">
+          <div class="article-title">5.3. Обстоятельства непреодолимой силы</div>
+          <div class="article-body">
+            <p>Стороны освобождаются от ответственности за неисполнение обязательств в случае возникновения обстоятельств непреодолимой силы (форс-мажор): стихийные бедствия, действия государственных органов, аварии в сетях связи и иные обстоятельства, находящиеся вне разумного контроля Сторон.</p>
+          </div>
+        </div>
+      </div>
+    </div>
 
-<div class="doc-meta">
-  <div>
-    <div class="doc-meta-label">Сервис</div>
-    <div class="doc-meta-value">VillianCDZ · Пользовательское соглашение</div>
-  </div>
-  <div style="text-align:right">
-    <div class="doc-meta-label">Вступает в силу</div>
-    <div class="doc-meta-value">[ДАТА]</div>
-  </div>
-</div>
+    <!-- Глава 6 -->
+    <div class="chapter">
+      <div class="chapter-title"><span class="chapter-num">6</span> Интеллектуальная собственность</div>
+      <div class="chapter-body">
+        <div class="article">
+          <div class="article-title">6.1. Права на Сервис</div>
+          <div class="article-body">
+            <ol class="legal">
+              <li>Все исключительные права на Сервис, включая программный код, дизайн, логотип, название и торговое обозначение VillianCDZ, принадлежат Исполнителю.</li>
+              <li>Настоящее Соглашение не предоставляет Пользователю каких-либо прав на объекты интеллектуальной собственности Исполнителя, кроме права использования Сервиса в соответствии с его условиями.</li>
+            </ol>
+          </div>
+        </div>
+        <div class="article">
+          <div class="article-title">6.2. Права на контент</div>
+          <div class="article-body">
+            <ol class="legal">
+              <li>Сгенерированный контент предоставляется Пользователю для личного некоммерческого использования.</li>
+              <li>Пользователь не вправе воспроизводить, распространять или использовать в коммерческих целях материалы Сервиса без письменного согласия Исполнителя.</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
 
-<div class="copy-block">
-  <div class="copy-block-title">📋 Готовый текст для команды /terms в боте</div>
-  <pre id="terms-text">📋 *Пользовательское соглашение VillianCDZ*
-```
+    <!-- Глава 7 -->
+    <div class="chapter">
+      <div class="chapter-title"><span class="chapter-num">7</span> Приостановление и прекращение доступа</div>
+      <div class="chapter-body">
+        <div class="article">
+          <div class="article-title">7.1. Основания для блокировки</div>
+          <div class="article-body">
+            <p>Исполнитель вправе немедленно заблокировать доступ Пользователя к Сервису без предварительного уведомления в случае:</p>
+            <ol class="legal">
+              <li>Нарушения любого из условий настоящего Соглашения.</li>
+              <li>Подозрения в мошеннических действиях или злоупотреблении Сервисом.</li>
+              <li>Попыток несанкционированного доступа к системам Сервиса.</li>
+              <li>Создания множественных учётных записей.</li>
+              <li>Нарушения применимого законодательства РФ при использовании Сервиса.</li>
+            </ol>
+          </div>
+        </div>
+        <div class="article">
+          <div class="article-title">7.2. Последствия блокировки</div>
+          <div class="article-body">
+            <ol class="legal">
+              <li>При блокировке за нарушение настоящего Соглашения оставшийся период подписки и неиспользованные единицы генерации денежному возмещению не подлежат.</li>
+              <li>Исполнитель вправе удалить данные заблокированного Пользователя по истечении 30 (тридцати) дней с момента блокировки.</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
 
-Используя бота, вы принимаете следующие условия:
+    <!-- Глава 8 -->
+    <div class="chapter">
+      <div class="chapter-title"><span class="chapter-num">8</span> Реферальная программа</div>
+      <div class="chapter-body">
+        <div class="article">
+          <div class="article-title">8.1. Условия программы</div>
+          <div class="article-body">
+            <ol class="legal">
+              <li>Каждый Пользователь получает персональную реферальную ссылку, доступную через команду /ref.</li>
+              <li>За каждого нового Пользователя, зарегистрировавшегося по реферальной ссылке, реферер получает <span class="highlight">3 (три) дополнительные единицы генерации</span>.</li>
+              <li>Новый Пользователь, зарегистрировавшийся по реферальной ссылке, получает <span class="highlight">9 (девять) единиц генерации</span> вместо стандартных 7 (семи).</li>
+              <li>Единицы генерации, полученные через реферальную программу, не имеют денежного эквивалента и не могут быть переведены в денежные средства.</li>
+              <li>Исполнитель оставляет за собой право изменять условия реферальной программы с уведомлением Пользователей через Сервис.</li>
+              <li>Злоупотребление реферальной программой (в том числе создание фиктивных аккаунтов) является основанием для блокировки без компенсации.</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
 
-1️⃣ Сервис предназначен для лиц от 14 лет
-2️⃣ Запрещена передача или продажа доступа третьим лицам
-3️⃣ Администратор не несёт ответственности за точность ответов ИИ и последствия использования решений ДЗ
-4️⃣ Возврат средств — в течение 24ч при отсутствии использования платных функций (/sup)
-5️⃣ Нарушение правил ведёт к блокировке без компенсации подписки
+    <!-- Глава 9 -->
+    <div class="chapter">
+      <div class="chapter-title"><span class="chapter-num">9</span> Порядок разрешения споров</div>
+      <div class="chapter-body">
+        <div class="article">
+          <div class="article-title">9.1. Досудебный порядок</div>
+          <div class="article-body">
+            <ol class="legal">
+              <li>Все споры и разногласия, возникающие в связи с использованием Сервиса, разрешаются путём переговоров через службу поддержки (/sup).</li>
+              <li>Срок рассмотрения претензии — 30 (тридцать) календарных дней с момента её получения.</li>
+            </ol>
+          </div>
+        </div>
+        <div class="article">
+          <div class="article-title">9.2. Судебный порядок</div>
+          <div class="article-body">
+            <ol class="legal">
+              <li>При невозможности урегулирования спора в досудебном порядке он подлежит рассмотрению в суде по месту нахождения Исполнителя в соответствии с законодательством Российской Федерации.</li>
+              <li>К настоящему Соглашению применяется право Российской Федерации.</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
 
-📄 Полная версия: [ССЫЛКА]
-💬 Поддержка: /sup</pre>
-<button class="copy-btn" onclick="copyText('terms-text', this)">Скопировать</button>
-</div>
+    <!-- Глава 10 -->
+    <div class="chapter">
+      <div class="chapter-title"><span class="chapter-num">10</span> Изменение соглашения и заключительные положения</div>
+      <div class="chapter-body">
+        <div class="article">
+          <div class="article-title">10.1. Изменение условий</div>
+          <div class="article-body">
+            <ol class="legal">
+              <li>Исполнитель вправе в одностороннем порядке вносить изменения в настоящее Соглашение.</li>
+              <li>Уведомление об изменениях публикуется в Сервисе не менее чем за 7 (семь) дней до вступления изменений в силу.</li>
+              <li>Продолжение использования Сервиса после вступления изменений в силу означает согласие Пользователя с новой редакцией Соглашения.</li>
+            </ol>
+          </div>
+        </div>
+        <div class="article">
+          <div class="article-title">10.2. Заключительные положения</div>
+          <div class="article-body">
+            <ol class="legal">
+              <li>Если какое-либо положение настоящего Соглашения признаётся недействительным, остальные положения сохраняют свою силу.</li>
+              <li>Настоящее Соглашение составлено на русском языке и регулируется законодательством Российской Федерации.</li>
+              <li>Дата последней редакции: <span class="highlight">[ДАТА]</span>.</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="doc-meta">
+      <div>
+        <div class="doc-meta-label">Документ</div>
+        <div class="doc-meta-value">Пользовательское соглашение (Публичная оферта)</div>
+      </div>
+      <div>
+        <div class="doc-meta-label">Редакция</div>
+        <div class="doc-meta-value">2026 · РФ · ГК РФ ст. 437-438</div>
+      </div>
+      <div style="text-align:right">
+        <div class="doc-meta-label">Вступает в силу</div>
+        <div class="doc-meta-value">[ДАТА]</div>
+      </div>
+    </div>
 
   </div>
 
   <!-- ===== ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ ===== -->
-
   <div class="panel" id="privacy">
 
-```
-<div class="section">
-  <div class="section-header">
-    <div class="section-icon">📋</div>
-    <div class="section-title">О документе</div>
-    <div class="section-num">1</div>
-  </div>
-  <div class="section-body">
-    <p>Настоящая Политика конфиденциальности описывает, какие данные собирает <span class="highlight">VillianCDZ</span>, как они используются и защищаются.</p>
-    <p>Документ разработан в соответствии с требованиями Федерального закона № 152-ФЗ «О персональных данных».</p>
-    <p>Используя Сервис, вы даёте согласие на обработку данных в соответствии с настоящей Политикой.</p>
-  </div>
-</div>
+    <div class="doc-title">Политика конфиденциальности и обработки персональных данных</div>
 
-<div class="section">
-  <div class="section-header">
-    <div class="section-icon">📦</div>
-    <div class="section-title">Какие данные мы собираем</div>
-    <div class="section-num">2</div>
-  </div>
-  <div class="section-body">
-    <ul>
-      <li><span class="highlight">Telegram ID и имя</span> — уникальный идентификатор и имя из вашего Telegram-профиля</li>
-      <li><span class="highlight">Токен МЭШ</span> — временный токен авторизации для доступа к вашим заданиям</li>
-      <li><span class="highlight">Настройки решения</span> — выбранное время выполнения и допустимое число ошибок</li>
-      <li><span class="highlight">История диалога с ИИ</span> — для поддержания контекста беседы (сбрасывается по /reset)</li>
-      <li><span class="highlight">Статус подписки</span> — тариф, дата окончания, баланс запросов</li>
-    </ul>
-    <p>Мы <span class="highlight">не собираем</span>: пароли от МЭШ, платёжные реквизиты (обрабатываются платёжными системами), личную переписку вне бота.</p>
-  </div>
-</div>
+    <div class="doc-intro">
+      Настоящая Политика конфиденциальности разработана в соответствии с требованиями Федерального закона от 27.07.2006 № 152-ФЗ «О персональных данных», Постановления Правительства РФ № 1119 и иных нормативных актов в сфере защиты персональных данных. Настоящая Политика является неотъемлемой частью Пользовательского соглашения.
+    </div>
 
-<div class="section">
-  <div class="section-header">
-    <div class="section-icon">🎯</div>
-    <div class="section-title">Цели обработки данных</div>
-    <div class="section-num">3</div>
-  </div>
-  <div class="section-body">
-    <p>Данные используются исключительно для:</p>
-    <ul>
-      <li>Предоставления функций Сервиса (просмотр ДЗ, автоматическое решение)</li>
-      <li>Сохранения ваших настроек между сессиями</li>
-      <li>Поддержания контекста диалога с ИИ-ассистентом</li>
-      <li>Управления подпиской и балансом</li>
-      <li>Технической поддержки при обращении через /sup</li>
-    </ul>
-  </div>
-</div>
+    <!-- Глава 1 -->
+    <div class="chapter">
+      <div class="chapter-title"><span class="chapter-num">1</span> Общие положения</div>
+      <div class="chapter-body">
+        <div class="article">
+          <div class="article-title">1.1. Оператор персональных данных</div>
+          <div class="article-body">
+            <p>Оператором персональных данных является физическое лицо <span class="highlight">Администрация сервиса VillianCDZ</span> (далее — «Оператор»), обеспечивающее функционирование Telegram-бота VillianCDZ.</p>
+          </div>
+        </div>
+        <div class="article">
+          <div class="article-title">1.2. Применимое законодательство</div>
+          <div class="article-body">
+            <p>Обработка персональных данных осуществляется в соответствии с:</p>
+            <ol class="legal">
+              <li>Федеральным законом от 27.07.2006 № 152-ФЗ «О персональных данных».</li>
+              <li>Постановлением Правительства РФ от 01.11.2012 № 1119 «Об утверждении требований к защите персональных данных».</li>
+              <li>Приказом ФСТЭК России от 18.02.2013 № 21.</li>
+              <li>Иными нормативными правовыми актами в сфере персональных данных, действующими на территории РФ.</li>
+            </ol>
+          </div>
+        </div>
+        <div class="article">
+          <div class="article-title">1.3. Согласие на обработку</div>
+          <div class="article-body">
+            <p>Начало использования Сервиса означает свободное, конкретное, информированное и сознательное согласие Пользователя на обработку его персональных данных в соответствии с настоящей Политикой (ст. 9 ФЗ-152).</p>
+          </div>
+        </div>
+      </div>
+    </div>
 
-<div class="section">
-  <div class="section-header">
-    <div class="section-icon">🔑</div>
-    <div class="section-title">Токен МЭШ — особые условия</div>
-    <div class="section-num">4</div>
-  </div>
-  <div class="section-body">
-    <p>Токен МЭШ — чувствительные данные. Мы обеспечиваем их особую защиту:</p>
-    <ul>
-      <li>Токен используется <span class="highlight">исключительно</span> для получения списка ваших ДЗ и их выполнения</li>
-      <li>Токен не передаётся третьим лицам ни при каких обстоятельствах</li>
-      <li>Вы можете удалить токен в любой момент через команду <span class="highlight">/mesh → Отвязать</span></li>
-      <li>При истечении срока действия токен автоматически удаляется из системы</li>
-    </ul>
-    <p>⚠️ Администратор не несёт ответственности за компрометацию токена, если она произошла по вине пользователя.</p>
-  </div>
-</div>
+    <!-- Глава 2 -->
+    <div class="chapter">
+      <div class="chapter-title"><span class="chapter-num">2</span> Состав обрабатываемых данных</div>
+      <div class="chapter-body">
+        <div class="article">
+          <div class="article-title">2.1. Данные, получаемые от Пользователя</div>
+          <div class="article-body">
+            <ol class="legal">
+              <li><span class="highlight">Идентификационные данные Telegram</span>: уникальный числовой идентификатор (Telegram ID), имя пользователя (username), отображаемое имя — передаются автоматически при взаимодействии с Telegram-ботом.</li>
+              <li><span class="highlight">Токен МЭШ</span> — временный авторизационный ключ, предоставляемый Пользователем самостоятельно и добровольно для получения данных о домашних заданиях.</li>
+              <li><span class="highlight">Пользовательские настройки</span>: параметры решения заданий (время выполнения, количество ошибок), выбранный тарифный план.</li>
+              <li><span class="highlight">История взаимодействия с ИИ-ассистентом</span>: текстовые запросы, направленные Пользователем в рамках сессии.</li>
+              <li><span class="highlight">Данные о подписке</span>: тарифный план, дата начала и окончания подписки, баланс единиц генерации.</li>
+              <li><span class="highlight">Реферальные данные</span>: информация о приглашённых Пользователях и полученных бонусах.</li>
+            </ol>
+          </div>
+        </div>
+        <div class="article">
+          <div class="article-title">2.2. Данные, которые НЕ собираются</div>
+          <div class="article-body">
+            <div class="info-box">
+              ✅ Оператор не собирает и не обрабатывает: пароли от учётных записей МЭШ и Telegram, платёжные реквизиты (обрабатываются исключительно платёжными системами), содержание личной переписки вне интерфейса бота, биометрические данные, специальные категории персональных данных (ст. 10 ФЗ-152).
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-<div class="section">
-  <div class="section-header">
-    <div class="section-icon">🤝</div>
-    <div class="section-title">Передача данных третьим лицам</div>
-    <div class="section-num">5</div>
-  </div>
-  <div class="section-body">
-    <p>Ваши данные <span class="highlight">не продаются и не передаются</span> третьим лицам, за исключением:</p>
-    <ul>
-      <li><span class="highlight">Anthropic (Claude API)</span> — текст запросов к ИИ-ассистенту. Регулируется политикой Anthropic: anthropic.com/privacy</li>
-      <li><span class="highlight">МЭШ API</span> — токен передаётся для получения данных о ваших ДЗ</li>
-      <li><span class="highlight">Платёжные системы</span> — при оформлении подписки (только платёжные данные)</li>
-      <li><span class="highlight">Государственные органы</span> — исключительно по требованию закона</li>
-    </ul>
-  </div>
-</div>
+    <!-- Глава 3 -->
+    <div class="chapter">
+      <div class="chapter-title"><span class="chapter-num">3</span> Цели и правовые основания обработки</div>
+      <div class="chapter-body">
+        <div class="article">
+          <div class="article-title">3.1. Цели обработки персональных данных</div>
+          <div class="article-body">
+            <ol class="legal">
+              <li>Идентификация Пользователя и предоставление доступа к функциям Сервиса.</li>
+              <li>Исполнение договора об оказании услуг (Пользовательского соглашения).</li>
+              <li>Управление подпиской, учёт баланса единиц генерации и реферальных начислений.</li>
+              <li>Обеспечение контекста диалога с ИИ-ассистентом в рамках сессии.</li>
+              <li>Обработка обращений в службу поддержки.</li>
+              <li>Соблюдение требований применимого законодательства РФ.</li>
+            </ol>
+          </div>
+        </div>
+        <div class="article">
+          <div class="article-title">3.2. Правовые основания обработки</div>
+          <div class="article-body">
+            <ol class="legal">
+              <li>Согласие субъекта персональных данных (ст. 6, ч. 1, п. 1 ФЗ-152).</li>
+              <li>Исполнение договора, стороной которого является субъект персональных данных (ст. 6, ч. 1, п. 5 ФЗ-152).</li>
+              <li>Законные интересы Оператора (обеспечение безопасности и работоспособности Сервиса).</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
 
-<div class="section">
-  <div class="section-header">
-    <div class="section-icon">🛡️</div>
-    <div class="section-title">Защита данных</div>
-    <div class="section-num">6</div>
-  </div>
-  <div class="section-body">
-    <ul>
-      <li>Данные хранятся на защищённых серверах с ограниченным доступом</li>
-      <li>Токен МЭШ хранится в зашифрованном виде</li>
-      <li>Регулярное обновление систем безопасности</li>
-      <li>В случае утечки данных пользователи уведомляются в течение <span class="highlight">72 часов</span></li>
-    </ul>
-  </div>
-</div>
+    <!-- Глава 4 -->
+    <div class="chapter">
+      <div class="chapter-title"><span class="chapter-num">4</span> Особые условия обработки токена МЭШ</div>
+      <div class="chapter-body">
+        <div class="article">
+          <div class="article-title">4.1. Назначение и ограничения использования</div>
+          <div class="article-body">
+            <div class="warning-box">
+              ⚠️ Токен МЭШ является чувствительными данными и обрабатывается с применением повышенных мер защиты.
+            </div>
+            <ol class="legal">
+              <li>Токен МЭШ используется исключительно для получения перечня домашних заданий из учётной записи Пользователя и их автоматического выполнения — и ни для каких иных целей.</li>
+              <li>Токен не передаётся третьим лицам, за исключением случаев, прямо указанных в настоящей Политике.</li>
+              <li>Токен хранится в зашифрованном виде.</li>
+              <li>Пользователь вправе отозвать токен в любой момент через команду /mesh → «Отвязать».</li>
+              <li>По истечении срока действия токен автоматически удаляется из системы.</li>
+              <li>Оператор не несёт ответственности за последствия, возникшие в результате компрометации токена по вине Пользователя.</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
 
-<div class="section">
-  <div class="section-header">
-    <div class="section-icon">👤</div>
-    <div class="section-title">Ваши права</div>
-    <div class="section-num">7</div>
-  </div>
-  <div class="section-body">
-    <ul>
-      <li><span class="highlight">Доступ</span> — получить информацию о хранящихся данных через /sup</li>
-      <li><span class="highlight">Исправление</span> — скорректировать некорректные данные</li>
-      <li><span class="highlight">Удаление</span> — полностью удалить аккаунт и данные через /sup</li>
-      <li><span class="highlight">Отзыв согласия</span> — прекратить обработку данных (влечёт невозможность использования Сервиса)</li>
-    </ul>
-    <p>Запросы обрабатываются в течение <span class="highlight">30 дней</span>.</p>
-  </div>
-</div>
+    <!-- Глава 5 -->
+    <div class="chapter">
+      <div class="chapter-title"><span class="chapter-num">5</span> Передача данных третьим лицам</div>
+      <div class="chapter-body">
+        <div class="article">
+          <div class="article-title">5.1. Общий принцип</div>
+          <div class="article-body">
+            <p>Персональные данные Пользователей <span class="highlight">не продаются, не передаются и не раскрываются</span> третьим лицам в коммерческих целях.</p>
+          </div>
+        </div>
+        <div class="article">
+          <div class="article-title">5.2. Допустимая передача данных</div>
+          <div class="article-body">
+            <p>Данные могут передаваться следующим третьим лицам исключительно в объёме, необходимом для оказания Сервиса:</p>
+            <ol class="legal">
+              <li><span class="highlight">Anthropic, Inc. (Claude API)</span> — текстовые запросы Пользователя к ИИ-ассистенту передаются для генерации ответов. Обработка регулируется Политикой конфиденциальности Anthropic (anthropic.com/privacy). Пользователь осведомлён о данной передаче.</li>
+              <li><span class="highlight">МЭШ API</span> — токен авторизации передаётся для получения данных о домашних заданиях Пользователя.</li>
+              <li><span class="highlight">Платёжные системы</span> — при оформлении подписки платёжные данные обрабатываются непосредственно платёжной системой; Оператор получает только подтверждение факта оплаты.</li>
+              <li><span class="highlight">Уполномоченные органы государственной власти РФ</span> — при наличии законного требования в соответствии с применимым законодательством.</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
 
-<div class="section">
-  <div class="section-header">
-    <div class="section-icon">🗑️</div>
-    <div class="section-title">Хранение и удаление</div>
-    <div class="section-num">8</div>
-  </div>
-  <div class="section-body">
-    <ul>
-      <li>Данные хранятся всё время, пока вы пользуетесь Сервисом</li>
-      <li>История ИИ-диалога — команда <span class="highlight">/reset</span></li>
-      <li>Токен МЭШ — команда <span class="highlight">/mesh → Отвязать</span></li>
-      <li>Все данные — запрос в <span class="highlight">/sup</span>, удаление в течение 30 дней</li>
-      <li>Аккаунты без активности более 12 месяцев удаляются автоматически</li>
-    </ul>
-  </div>
-</div>
+    <!-- Глава 6 -->
+    <div class="chapter">
+      <div class="chapter-title"><span class="chapter-num">6</span> Защита персональных данных</div>
+      <div class="chapter-body">
+        <div class="article">
+          <div class="article-title">6.1. Технические и организационные меры защиты</div>
+          <div class="article-body">
+            <ol class="legal">
+              <li>Хранение данных на защищённых серверах с ограниченным доступом.</li>
+              <li>Шифрование чувствительных данных (токен МЭШ) при хранении.</li>
+              <li>Разграничение прав доступа к базам данных.</li>
+              <li>Регулярное обновление программного обеспечения и систем безопасности.</li>
+              <li>Мониторинг несанкционированного доступа.</li>
+            </ol>
+          </div>
+        </div>
+        <div class="article">
+          <div class="article-title">6.2. Уведомление об инцидентах</div>
+          <div class="article-body">
+            <ol class="legal">
+              <li>В случае выявления утечки или несанкционированного доступа к персональным данным Оператор уведомляет Пользователей через Сервис в течение <span class="highlight">72 (семидесяти двух) часов</span> с момента обнаружения инцидента.</li>
+              <li>Оператор принимает незамедлительные меры по устранению последствий инцидента.</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
 
-<div class="doc-meta">
-  <div>
-    <div class="doc-meta-label">Сервис</div>
-    <div class="doc-meta-value">VillianCDZ · Политика конфиденциальности</div>
-  </div>
-  <div style="text-align:right">
-    <div class="doc-meta-label">Вступает в силу</div>
-    <div class="doc-meta-value">[ДАТА]</div>
-  </div>
-</div>
+    <!-- Глава 7 -->
+    <div class="chapter">
+      <div class="chapter-title"><span class="chapter-num">7</span> Права субъекта персональных данных</div>
+      <div class="chapter-body">
+        <div class="article">
+          <div class="article-title">7.1. Перечень прав</div>
+          <div class="article-body">
+            <p>В соответствии со статьями 14-17 ФЗ-152 Пользователь вправе:</p>
+            <ol class="legal">
+              <li><span class="highlight">Получить информацию</span> о составе обрабатываемых персональных данных, целях и правовых основаниях их обработки — через обращение в /sup.</li>
+              <li><span class="highlight">Потребовать уточнения</span> неточных или неполных персональных данных.</li>
+              <li><span class="highlight">Потребовать удаления</span> персональных данных в случаях, предусмотренных ФЗ-152.</li>
+              <li><span class="highlight">Отозвать согласие</span> на обработку персональных данных (влечёт прекращение возможности использования Сервиса).</li>
+              <li><span class="highlight">Обжаловать</span> действия или бездействие Оператора в Роскомнадзор или суд.</li>
+            </ol>
+          </div>
+        </div>
+        <div class="article">
+          <div class="article-title">7.2. Порядок реализации прав</div>
+          <div class="article-body">
+            <ol class="legal">
+              <li>Запросы на реализацию прав направляются через службу поддержки /sup.</li>
+              <li>Оператор рассматривает запрос и предоставляет ответ в течение <span class="highlight">30 (тридцати) календарных дней</span>.</li>
+              <li>Удаление данных через команду /sup — в течение 30 дней с момента подтверждённого запроса.</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
 
-<div class="copy-block">
-  <div class="copy-block-title">📋 Готовый текст для бота</div>
-  <pre id="privacy-text">🔒 *Политика конфиденциальности VillianCDZ*
-```
+    <!-- Глава 8 -->
+    <div class="chapter">
+      <div class="chapter-title"><span class="chapter-num">8</span> Сроки хранения и удаление данных</div>
+      <div class="chapter-body">
+        <div class="article">
+          <div class="article-title">8.1. Сроки хранения</div>
+          <div class="article-body">
+            <ol class="legal">
+              <li>Персональные данные хранятся в течение всего периода использования Сервиса Пользователем.</li>
+              <li>После прекращения использования данные хранятся не более <span class="highlight">12 (двенадцати) месяцев</span>, после чего удаляются автоматически.</li>
+              <li>История диалога с ИИ-ассистентом удаляется по команде <span class="highlight">/reset</span> или автоматически при каждой новой сессии.</li>
+              <li>Токен МЭШ хранится до его отзыва Пользователем или истечения срока действия.</li>
+            </ol>
+          </div>
+        </div>
+        <div class="article">
+          <div class="article-title">8.2. Удаление данных по запросу</div>
+          <div class="article-body">
+            <ol class="legal">
+              <li>По запросу Пользователя все его персональные данные удаляются в течение 30 (тридцати) календарных дней.</li>
+              <li>После удаления данных восстановление доступа к Сервису невозможно.</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
 
-Мы храним: Telegram ID, имя, токен МЭШ, настройки бота, статус подписки.
+    <!-- Глава 9 -->
+    <div class="chapter">
+      <div class="chapter-title"><span class="chapter-num">9</span> Изменение политики и заключительные положения</div>
+      <div class="chapter-body">
+        <div class="article">
+          <div class="article-title">9.1. Изменение Политики</div>
+          <div class="article-body">
+            <ol class="legal">
+              <li>Оператор вправе вносить изменения в настоящую Политику. Актуальная версия публикуется по постоянному адресу в сети интернет.</li>
+              <li>Продолжение использования Сервиса после публикации изменений означает согласие Пользователя с новой редакцией Политики.</li>
+            </ol>
+          </div>
+        </div>
+        <div class="article">
+          <div class="article-title">9.2. Контактная информация</div>
+          <div class="article-body">
+            <p>По всем вопросам, связанным с обработкой персональных данных, Пользователь вправе обратиться через команду <span class="highlight">/sup</span> в Сервисе.</p>
+          </div>
+        </div>
+        <div class="article">
+          <div class="article-title">9.3. Заключительные положения</div>
+          <div class="article-body">
+            <ol class="legal">
+              <li>Настоящая Политика составлена на русском языке и регулируется законодательством Российской Федерации.</li>
+              <li>Дата последней редакции: <span class="highlight">[ДАТА]</span>.</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
 
-Данные используются только для работы Сервиса и *не продаются* третьим лицам.
-
-Токен МЭШ используется исключительно для получения ваших ДЗ. Удалить: /mesh → Отвязать.
-
-Запросы к ИИ-ассистенту обрабатываются через Anthropic Claude API.
-
-🗑 Удалить все данные: /sup
-🔄 Сбросить диалог ИИ: /reset
-
-📄 Полная версия: [ССЫЛКА]</pre>
-<button class="copy-btn" onclick="copyText('privacy-text', this)">Скопировать</button>
-</div>
+    <div class="doc-meta">
+      <div>
+        <div class="doc-meta-label">Документ</div>
+        <div class="doc-meta-value">Политика конфиденциальности</div>
+      </div>
+      <div>
+        <div class="doc-meta-label">Основание</div>
+        <div class="doc-meta-value">ФЗ-152 · ПП РФ № 1119</div>
+      </div>
+      <div style="text-align:right">
+        <div class="doc-meta-label">Вступает в силу</div>
+        <div class="doc-meta-value">[ДАТА]</div>
+      </div>
+    </div>
 
   </div>
 
@@ -606,13 +958,6 @@ function switchTab(id, el) {
   document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
   document.getElementById(id).classList.add('active');
   el.classList.add('active');
-}
-function copyText(id, btn) {
-  navigator.clipboard.writeText(document.getElementById(id).textContent).then(() => {
-    const orig = btn.textContent;
-    btn.textContent = '✓ Скопировано!';
-    setTimeout(() => btn.textContent = orig, 2000);
-  });
 }
 </script>
 </body>
